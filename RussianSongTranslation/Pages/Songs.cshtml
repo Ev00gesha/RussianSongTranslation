@@ -1,0 +1,71 @@
+﻿@page
+@model RussianSongTranslation.Pages.SongsModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/songs.css" asp-append-version="true"/>
+</head>
+<body>
+	<div class="container">
+		<div class="first_part">
+			<div class="overlay">
+				<div class="header">
+					<a href="@Url.Page("/Index")" class="header-link">Главная</a>
+					<a href="@Url.Page("/Songs")" class="header-link">Песни</a>
+					<a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+					<a href="@Url.Page(UserInfo.UrlButton)" class="header-link">@UserInfo.StatusButton</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="favourites">
+		<h2 class="favourite-text">Все песни</h2>
+		<form method="post">
+			<div class="form-group">
+				<div class="inner-block">
+					<label for="genre">Жанр:</label>
+					<select id="genre" name="genre">
+						<option value="">Выберите жанр</option>
+							@foreach (var genre in Model.Genres)
+							{
+								<option value=@genre.Name>@genre.Name</option>
+							}
+					</select>
+				</div>
+				<div class="inner-block">
+					<label for="language">Язык:</label>
+					<select id="language" name="language">
+						<option value="">Выберите язык</option>
+						<option value="Французский">Французский</option>
+						<option value="Английский">Английский</option>
+						<option value="Итальянский">Итальянский</option>
+						<option value="Испанский">Испанский</option>
+						<option value="Немецкий">Немецкий</option>
+					</select>
+				</div>
+				<div class="inner-block">
+					<input asp-page-handler="Sort" type="submit" value="Найти"/>
+				</div>
+			</div>
+		</form>
+		<div class="grid-container">
+			@foreach (var song in Model.Songs)
+			{
+				<div class="card">
+					<div class="card-image" style="background-image: url(@song.Url); height: 100%; width: 30%; background-size: 100% 100%;"></div>
+					<div class="card-content">
+						<h2 class="card-title"><a class="card-link" href="@Url.Page("/SongPage", new {song.Id})">@song.Name</a></h2>
+						<p class="card-details">Длительность: @(song.Duration / 60):@(song.Duration % 60) минут</p>
+						<p class="card-details">Жанр: @Model.db.Genres.Where(x => x.Id == song.GenreId).FirstOrDefault().Name</p>
+					</div>
+				</div>
+			}
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+﻿body {
+    background-color: lightgray;
+    zoom: 150%;
+}
+
+h2 {
+    margin: 0;
+    font-size: 21px;
+    font-family: gotha, Tahoma, Geneva, sans-serif;
+    font-weight: normal;
+}
+
+.admin_text {
+    padding: 10px 10px 10px 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.error-text {
+    color: firebrick;
+    padding: 10px 10px 10px 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.button-panel {
+    display: flex;
+    flex-direction: column;
+    margin-left:10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #221d1d;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    transition: color 0.3s;
+    padding: 10px 15px;
+}
+
+.header-link:hover {
+    color: #890000;
+}
+
+.button-panel button {
+    width: 200px;
+    height: 40px;
+    border: 1px solid gray;
+    background: #ffffff;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: -7px;
+}
+
+.form-container {
+    width: 400px;
+    margin: -20% 30%;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 3px solid #221d1d;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"]{
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/dropwodn-arrow.png") no-repeat right center;
+    background-size: 15px;
+    padding-right: 30px;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #221d1d;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+}
+
+.hidden {
+    display: none;
+}

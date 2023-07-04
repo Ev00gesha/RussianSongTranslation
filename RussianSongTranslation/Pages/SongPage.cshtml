@@ -1,0 +1,93 @@
+﻿@page
+@model RussianSongTranslation.Pages.SongPageModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/songPage.css" rel="stylesheet" type="text/css">
+    <title>@Model.Song.Name</title>
+</head>
+<body>
+    <div class="container">
+        <div class="first_part">
+            <div class="overlay">
+                <div class="header">
+                    <a href="@Url.Page("/Index")" class="header-link">Главная</a>
+                    <a href="@Url.Page("/Songs")" class="header-link">Песни</a>
+                    <a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+                    <a href="@Url.Page(UserInfo.UrlButton)" class="header-link">@UserInfo.StatusButton</a>
+                </div>
+            </div>
+            <img height="225" width="225" src="@Model.Song.Url"/>
+            <p class="song-name">@Model.Song.Name</p>
+            <p class="song-info">Исполнитель: @Model.Song.Songer.Name<br><br>Жанр: @Model.Song.Genre.Name<br><br>Длительность: @(Model.Song.Duration / 60):@(Model.Song.Duration % 60) минут<br><br>@Model.AlbomOutput</p>
+            <form method="post" class="favourite-form">
+                <div class="submit-div @SongPageModel.FavouriteStatus">
+                    <input asp-page-handler="Favourite" type="submit" value="" class="submit-button"/>
+                </div>
+            </form>    
+        </div>
+    </div>
+    <div class="translation">
+        <table>
+            <tr>
+                <th>@Model.Song.Name</th>
+                <th>@Model.TranslatedSong.TranslationName</th>
+            </tr>
+            <tr>
+                @{
+                    for (int i = 0; i < Model.SongSentences.Count(); i++)
+                    {
+                        <tr>
+                            <td>
+                            @{
+                            foreach (string sentence in @Model.SongSentences[i].Split("\n"))
+                            {
+                                @sentence<br />
+                            }
+                            }
+                            <br/>
+                            </td>
+                            <td>
+                            @{
+                                foreach (string sentence in @Model.TranslationSentences[i].Split("\n"))
+                                {
+                                    @sentence<br />
+                                }
+                            }
+                            <br/>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tr>
+        </table>
+    </div>
+    <div class="comment-block">
+        <h2>Отзывы</h2>
+
+        <form method="post" class="comment-form @SongPageModel.FormCommentStatus">
+            <div class="comment-block">
+                <h3>Оставьте свой отзыв</h3>
+                <textarea name="text" rows="8" cols="76" required></textarea>
+                <input asp-page-handler="Comment" type="submit" class="submit-comment"/>
+            </div>
+        </form>
+
+        <div class="comments-block">
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="comment">
+                    <p class="comment-title">@comment.User.Email</p>
+                    <p class="comment-text">@comment.Text</p>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
+

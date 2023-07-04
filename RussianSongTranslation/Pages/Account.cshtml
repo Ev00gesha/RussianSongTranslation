@@ -1,0 +1,92 @@
+﻿@page
+@model RussianSongTranslation.Pages.AccountModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/account.css" asp-append-version="true"/>
+</head>
+<body>
+	<div class="container">
+		<div class="first_part">
+			<div class="overlay">
+				<div class="header">
+					<a href="@Url.Page("/Index")" class="header-link">Главная</a>
+					<a href="#" class="header-link">Песни</a>
+					<a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+					<a href="@Url.Page("/Index", new {exit=true})" class="header-link">Выйти</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="favourites">
+		<h2 class="favourite-text">Избранные песни</h2>
+		<div class="grid-container">
+			@foreach (var favorite in Model.Favorites)
+			{
+				<div class="card">
+					<div class="card-image" style="background-image: url(@favorite.Song.Url); height: 100%; width: 30%; background-size: 100% 100%;"></div>
+					<div class="card-content">
+						<h2 class="card-title"><a class="card-link" href="@Url.Page("/SongPage", new {favorite.Song.Id})">@favorite.Song.Name</a></h2>
+						<p class="card-details">Длительность: @(favorite.Song.Duration / 60):@(favorite.Song.Duration % 60) минут</p>
+						<p class="card-details">Жанр: @Model.db.Genres.Where(x => x.Id == favorite.Song.GenreId).FirstOrDefault().Name</p>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="button-container">
+			<form method="post">
+				<input asp-page-handler="Create" type="submit" class="button" value="Поделиться" />
+			</form>
+			<form method="post" enctype="multipart/form-data">
+				<label for="uploadedFile" class="file-upload-label">
+					<input type="file" name="uploadedFile" id="uploadedFile" class="file-upload-input">
+					<span class="file-upload-text">Выбрать файл</span>
+				</label>
+				<input asp-page-handler="Load" type="submit" value="Загрузить" class="button">
+			</form>
+			<script>
+				document.getElementById('uploadedFile').addEventListener('change', function () {
+				var fileInput = this;
+				var submitButton = document.querySelector('input[type="file"]');
+				var submitSpan = document.querySelector('.file-upload-text');
+
+				if (fileInput.files && fileInput.files.length > 0) {
+					submitButton.style.backgroundColor = '#1eff00';
+					submitSpan.textContent = 'Успешно';
+				} else {
+					submitButton.style.backgroundColor = 'ff0000';
+					submitSpan.textContent = 'Ошибка';
+				}
+			});</script>
+		</div>
+		<h2 class="translate-text">Предложить перевод</h2>
+		<div class="translate">
+			<form method="post">
+					<div class="form-group">
+						<label for="song">Песня:</label>
+						<select id="song" name="song" required>
+						<option value="">Выберите песню:</option>
+						@foreach (var song in Model.db.Songs.ToList())
+						{
+									<option value=@song.Name>@song.Name</option>
+						}
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="nameTranslation">Перевод названия:</label>
+						<input type="text" id="nameTranslation" name="nameTranslation" required>
+					</div>
+					<div class="form-group">
+						<label for="translationText">Перевод песни:</label>
+						<textarea id="translationText" name="translationText" rows="8" cols="51" required></textarea>
+					</div>
+					<input type="submit" asp-page-handler="Translation" class="submit-translation" value="Добавить">
+				</form>
+		</div>
+	</div>
+</body>
+</html>

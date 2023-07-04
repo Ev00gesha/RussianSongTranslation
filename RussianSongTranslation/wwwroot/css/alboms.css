@@ -1,0 +1,154 @@
+﻿body {
+    background-color: lightgray;
+    zoom: 150%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: -7px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #221d1d;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    transition: color 0.3s;
+    padding: 10px 15px;
+}
+
+    .header-link:hover {
+        color: #890000;
+    }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+    .overlay a {
+        color: rgba(255, 255, 255, 1);
+    }
+
+.favourites {
+    margin-top: 95px;
+    margin-left: 50px;
+}
+
+.favourite-text {
+    padding: 10px 10px 10px 0;
+    margin-bottom: 25px;
+    margin-left: 90px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+.grid-container {
+    display: grid;
+    margin: 20px 50px 0px 50px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: -5px;
+}
+
+h2{
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+p{
+    margin-block-start: 10px;
+    margin-block-end: 0px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.content {
+    height: 33.33%;
+    background-color: white;
+    padding: 5px;
+}
+
+.card-link-name:link,
+.card-link-name:visited {
+    color: #4E4E4E;
+    text-decoration: none;
+}
+
+.card-link-name:hover {
+    color: black;
+}
+
+.card-link-other:link,
+.card-link-other:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.card-link-other:hover {
+    color: #808080;
+}
+
+.form-group{
+    margin-top: -10px;
+    border-radius: 5px;
+    width: 300px;
+    margin-left: 80px;
+    display: flex;
+}
+
+.inner-block{
+    width:50%;
+}
+
+label{
+    margin:10px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input[type="number"] {
+    margin: 10px;
+    width: 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    display: block;
+    margin-left: 40px;
+    margin-top: 30px;
+    width: 90%;
+    padding: 10px;
+    background-color: #221d1d;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    input[type="submit"]:hover {
+        background-color: black;
+    }
+

@@ -1,0 +1,159 @@
+﻿body {
+    background-color: lightgray;
+    zoom: 150%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: -7px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #221d1d;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    transition: color 0.3s;
+    padding: 10px 15px;
+}
+
+    .header-link:hover {
+        color: #890000;
+    }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+    .overlay a {
+        color: rgba(255, 255, 255, 1);
+    }
+
+.favourites {
+    margin-top: 95px;
+    margin-left: 50px;
+}
+
+.favourite-text {
+    padding: 10px 10px 10px 0;
+    margin-bottom: 25px;
+    margin-left: 90px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.card-image {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-details {
+    font-size: 14px;
+    color: #888;
+}
+
+.card-link:link,
+.card-link:visited {
+    color: #4E4E4E;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    color: black;
+}
+
+.grid-container {
+    display: grid;
+    margin: 20px 50px 0px 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: -5px;
+}
+
+.form-group{
+    display: flex;
+    width: 60%;
+    margin-left: 70px;
+    margin-top: -20px;
+}
+
+label {
+    margin: 10px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.inner-block{
+    width: 33%;
+    margin: 10px;
+}
+
+select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/dropwodn-arrow.png") no-repeat right center;
+    background-size: 15px;
+    background-color: white;
+    padding-right: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin-top: 25px;
+    background-color: #221d1d;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    input[type="submit"]:hover {
+        background-color: black;
+    }
+

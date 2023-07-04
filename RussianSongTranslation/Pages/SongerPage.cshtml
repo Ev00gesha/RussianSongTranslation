@@ -1,0 +1,45 @@
+﻿@page
+@model RussianSongTranslation.Pages.SongerPageModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/songerPage.css" rel="stylesheet" type="text/css">
+    <title>@Model.Songer.Name</title>
+</head>
+<body>
+    <div class="container">
+        <div class="first_part">
+            <div class="overlay">
+                <div class="header">
+                    <a href="@Url.Page("/Index")" class="header-link">Главная</a>
+                    <a href="@Url.Page("/Songs")" class="header-link">Песни</a>
+                    <a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+                    <a href="@Url.Page(UserInfo.UrlButton)" class="header-link">@UserInfo.StatusButton</a>
+                </div>
+            </div>
+            <img class="songer-img" height="225" width="225" src="@Model.Songer.Url"/>
+            <p class="song-name">@Model.Songer.Name</p>
+            <p class="song-info">
+                @Model.Songer.Description
+            </p>
+        </div>
+        <div class="songs">
+           @foreach (var song in Model.Songs)
+           {
+                <div class="card">
+                    <div class="card-image" style="background-image: url(@song.Url); height: 100%; width: 30%; background-size: 100% 100%;"></div>
+                    <div class="card-content">
+                        <h2 class="card-title"><a class="card-link" href="@Url.Page("/SongPage", new {song.Id})">@song.Name</a></h2>
+                        <p class="card-details">Длительность: @(song.Duration / 60):@(song.Duration % 60) минут</p>
+                        <p class="card-details">Жанр: @Model.db.Genres.Where(x => x.Id == song.GenreId).FirstOrDefault().Name</p>
+                    </div>
+                </div>
+           }
+        </div>
+    </div>
+</body>
+</html>

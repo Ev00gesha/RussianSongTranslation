@@ -1,0 +1,130 @@
+﻿body {
+    background-color: lightgray;
+    zoom: 150%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: -7px;
+}
+
+.first_part {
+    width: 100%;
+    height: 500px;
+    background: url(../images/background.jpg);
+}
+
+.songs {
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 21px;
+    font-family: gotha, Tahoma, Geneva, sans-serif;
+    font-weight: normal;
+}
+
+p {
+    color: #4E4E4E;
+}
+
+.popular_text {
+    padding: 10px 10px 10px 0;
+    margin-bottom: 25px;
+    margin-left: 90px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.grid-container {
+    display: grid;
+    margin:0px 50px 0px 50px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:-5px;
+}
+
+.content {
+    height: 33.33%;
+    background-color: white;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #221d1d;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    transition: color 0.3s;
+    padding: 10px 15px;
+}
+
+    .header-link:hover {
+        color: #890000;
+    }
+
+.description {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bolder;
+    text-align: right;
+    margin-right: 25px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay a {
+    color: rgba(255, 255, 255, 1);
+}
+
+.card-link-name:link,
+.card-link-name:visited {
+    color: #4E4E4E;
+    text-decoration:none;
+}
+
+.card-link-name:hover{
+    color:black;
+}
+
+.card-link-other:link,
+.card-link-other:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.card-link-other:hover{
+    color: #808080;
+}

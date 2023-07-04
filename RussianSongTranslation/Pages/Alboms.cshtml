@@ -1,0 +1,52 @@
+﻿@page
+@model RussianSongTranslation.Pages.AlbomsModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/alboms.css" asp-append-version="true"/>
+</head>
+<body>
+	<div class="container">
+		<div class="first_part">
+			<div class="overlay">
+				<div class="header">
+					<a href="@Url.Page("/Index")" class="header-link">Главная</a>
+					<a href="@Url.Page("/Songs")" class="header-link">Песни</a>
+					<a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+					<a href="@Url.Page(UserInfo.UrlButton)" class="header-link">@UserInfo.StatusButton</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="favourites">
+		<h2 class="favourite-text">Все альбомы</h2>
+		<form method="post">
+			<div class="form-group">
+				<div class="inner-block">
+					<label for="albomYear">Год альбома:</label>
+					<input type="number" id="albomYear" name="albomYear">	
+				</div>
+				<div class=inner-block>
+					<input asp-page-handler="Sort" type="submit" value="Найти"/>
+				</div>
+			</div>
+		</form>
+		<div class="grid-container">
+			@foreach (var albom in Model.Alboms)
+			{
+				<div class="card">
+						<div style="background-image: url(@albom.Url); height: 66.66%; background-size: 100% 100%;"></div>
+						<div class="content">
+							<h2><a class="card-link-name" href="@Url.Page("/AlbomPage", new{@albom.Id})">@albom.Name</a></h2>
+							<p><a class="card-link-other" href="@Url.Page("/SongerPage", new{@albom.SongInAlboms.FirstOrDefault().Song.Songer.Id})">@albom.SongInAlboms.FirstOrDefault().Song.Songer.Name</a></p>
+						</div>
+				</div>
+			}     
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@page
+@model AuthModel
+@{
+    ViewData["Title"] = "Главная страница";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="overlay">
+            <div class="header">
+                <a href="@Url.Page("/Index")" class="header-link">Главная</a>
+                <a href="@Url.Page("/Songs")" class="header-link">Песни</a>
+                <a href="@Url.Page("/Alboms")" class="header-link">Альбомы</a>
+            </div>
+        </div>
+
+        <div class="cotn_principal">
+        <div class="cont_centrar">
+        <script src="~/js/auth.js"></script>
+            <div class="cont_login">
+                <div class="cont_info_log_sign_up">
+                    <div class="col_md_login">
+                        <div class="cont_ba_opcitiy">
+                            <h2>Войти</h2>
+                            <p>У вас уже есть логин?</p>
+                            <button class="btn_login" onclick="cambiar_login()">Войти</button>
+                        </div>
+                    </div>
+                    <div class="col_md_sign_up">
+                        <div class="cont_ba_opcitiy">
+                            <h2>Регистрация</h2>
+                            <p>Нет логина?</p>
+                            <button class="btn_sign_up" onclick="cambiar_sign_up()">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont_back_info">
+                    <div class="cont_img_back_grey">
+                        <img src="~/images/bg.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="cont_forms">
+                    <div class="cont_img_back_">
+                        <img src="~/images/bg.jpg" alt="" />
+                    </div>
+                    <form method="post">
+                    <div class="cont_form_login">
+                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>Войти</h2>
+                        <input type="text" name="email" placeholder="E-mail" style="color: black;"/>
+                        <input type="password" name="password" placeholder="Пароль" style="color: black;" />
+                        <input type="submit" asp-page-handler="Login" class="btn_login" value="Войти"/>
+                    </div>
+                    </form>
+                    <form method="post">
+                            <div class="cont_form_sign_up">
+                                <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                                <h2>Регистрация</h2>
+                                <input type="text" name="email" placeholder="E-mail" style="color: black;"/>
+                                <input type="password" name="password" placeholder="Пароль" style="color: black;"/>
+                                <input type="password" name="repeatPassword" placeholder="Повторите пароль" style="color: black;"/>
+                                <input type="submit" class="btn_login" asp-page-handler="Registration" value="Зарегистрироваться" />
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  
+</body>
